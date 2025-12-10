@@ -6,84 +6,88 @@
     <title>同济大学红楼梦研究社</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
     <script>
         tailwind.config = { theme: { extend: { colors: { 'red-dream': '#A62424', 'ink': '#2D2D2D', 'rice': '#F5F0E6' }, fontFamily: { 'song': ['SimSun', 'serif'] } } } }
     </script>
-    <style>.text-shadow { text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }</style>
 </head>
 <body class="bg-rice font-song text-ink flex flex-col min-h-screen">
 
-    <!-- 1. 首页大图 -->
+    <!-- 1. Hero Section -->
     <section class="relative h-[600px] flex items-center justify-center bg-cover bg-center" style="background-image: url('https://picsum.photos/id/237/1920/800');">
         <div class="absolute inset-0 bg-black/40"></div>
         <div class="relative z-10 text-center text-white px-4">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 text-shadow">同济红楼</h1>
-            <p class="text-xl md:text-2xl mb-8">品红楼雅韵 · 探千古奇书</p>
-            <a href="community.html" class="bg-red-dream hover:bg-red-800 text-white px-8 py-3 rounded-md transition-colors text-lg">
-                <i class="fa fa-comments-o mr-2"></i> 加入大观园讨论
-            </a>
-        </div>
-    </section>
-
-    <!-- 2. 社团介绍 -->
-    <section id="about" class="py-16 px-4 container mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-10 text-red-dream">社团介绍</h2>
-        <div class="grid md:grid-cols-2 gap-8 items-center">
-            <img src="https://picsum.photos/id/24/600/400" class="rounded-lg shadow-lg">
-            <div class="text-lg leading-relaxed">
-                <p class="mb-4">同济大学红楼梦研究社成立于2005年，是校内历史最悠久的文化类社团之一。</p>
-                <p>我们以书会友，定期举办读书会、讲座与文化沙龙。在这里，你可以与知音共读西厢，亦可与同好共话巴山。</p>
+            <h1 class="text-6xl md:text-8xl font-bold mb-4 text-shadow-lg tracking-widest">同济红楼</h1>
+            <p class="text-xl md:text-2xl mb-8 font-light tracking-wide">品红楼雅韵 · 探千古奇书</p>
+            <div class="space-x-4">
+                <a href="community.html" class="bg-red-dream hover:bg-red-700 text-white px-8 py-3 rounded text-lg transition shadow-lg">
+                    进入大观园
+                </a>
+                <a href="pages/join-us.html" class="bg-white/10 hover:bg-white/20 backdrop-blur border border-white text-white px-8 py-3 rounded text-lg transition">
+                    加入社团
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- 3. 红楼赏析 (链接全部更新为 view.html?id=xxx) -->
-    <section id="appreciation" class="py-16 px-4 bg-white">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-10 text-red-dream">红楼赏析</h2>
+    <!-- 2. 最新赏析 (动态生成) -->
+    <section class="py-16 px-4 container mx-auto">
+        <div class="flex justify-between items-end mb-10 border-b border-red-dream/30 pb-4">
+            <h2 class="text-3xl font-bold text-red-dream">红楼赏析</h2>
+            <a href="#" class="text-gray-500 hover:text-red-dream text-sm">查看更多 <i class="fa fa-angle-right"></i></a>
+        </div>
+        <div id="article-grid" class="grid md:grid-cols-3 gap-8">
+            <!-- JS 将填充这里 -->
+        </div>
+    </section>
+
+    <!-- 3. 功能入口 -->
+    <section class="bg-ink text-rice py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-10">社团活动</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- 文章卡片 1 -->
-                <div class="bg-rice rounded-lg overflow-hidden shadow hover:shadow-xl transition">
-                    <img src="https://picsum.photos/id/25/600/300" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2 text-red-dream">黛玉葬花的美学意蕴</h3>
-                        <p class="text-sm text-gray-600 mb-4">葬花不仅是惜花，更是对生命归宿的哲学思考...</p>
-                        <a href="view.html?id=daiyu" class="text-red-dream font-bold hover:underline">阅读全文 →</a>
-                    </div>
-                </div>
-                <!-- 文章卡片 2 -->
-                <div class="bg-rice rounded-lg overflow-hidden shadow hover:shadow-xl transition">
-                    <img src="https://picsum.photos/id/26/600/300" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2 text-red-dream">金陵十二钗命运解读</h3>
-                        <p class="text-sm text-gray-600 mb-4">判词中的隐喻，早已注定了众人的结局...</p>
-                        <a href="view.html?id=jinling" class="text-red-dream font-bold hover:underline">阅读全文 →</a>
-                    </div>
-                </div>
-                <!-- 文章卡片 3 -->
-                <div class="bg-rice rounded-lg overflow-hidden shadow hover:shadow-xl transition">
-                    <img src="https://picsum.photos/id/27/600/300" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2 text-red-dream">红楼诗词艺术特色</h3>
-                        <p class="text-sm text-gray-600 mb-4">字字珠玑，句句血泪，解析红楼诗词之美...</p>
-                        <a href="view.html?id=poetry" class="text-red-dream font-bold hover:underline">阅读全文 →</a>
-                    </div>
-                </div>
+                <a href="pages/gallery.html" class="group block p-6 border border-white/10 rounded hover:bg-white/5 transition">
+                    <i class="fa fa-camera text-4xl mb-4 text-red-dream group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-2">光影红楼</h3>
+                    <p class="text-gray-400 text-sm">查看社团活动精彩瞬间与汉服摄影</p>
+                </a>
+                <a href="pages/quiz.html" class="group block p-6 border border-white/10 rounded hover:bg-white/5 transition">
+                    <i class="fa fa-question-circle text-4xl mb-4 text-red-dream group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-2">红楼雅趣</h3>
+                    <p class="text-gray-400 text-sm">挑战你的红楼梦知识储备</p>
+                </a>
+                <a href="pages/join-us.html" class="group block p-6 border border-white/10 rounded hover:bg-white/5 transition">
+                    <i class="fa fa-user-plus text-4xl mb-4 text-red-dream group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-2">招贤纳士</h3>
+                    <p class="text-gray-400 text-sm">填写报名表，成为我们的一员</p>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- 4. 联系我们 -->
-    <section id="contact" class="py-16 px-4 bg-red-dream/5 text-center">
-        <h2 class="text-3xl font-bold mb-6 text-red-dream">加入我们</h2>
-        <p class="mb-8 text-xl">每周二、四晚 18:00 · 人文学院 208 室</p>
-        <a href="community.html" class="inline-block bg-red-dream text-white px-8 py-3 rounded shadow hover:bg-red-800 transition">
-            进入线上社区留言
-        </a>
-    </section>
-
-    <!-- 引入逻辑文件 -->
+    <!-- 引入 JS -->
+    <script src="js/config.js"></script>
     <script src="js/data.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/navbar.js"></script>
+    <script>
+        // 首页特有逻辑：渲染文章卡片
+        const grid = document.getElementById('article-grid');
+        Object.keys(ARTICLES).forEach(key => {
+            const art = ARTICLES[key];
+            const card = `
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="${art.image}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2 text-ink group-hover:text-red-dream transition">${art.title}</h3>
+                        <p class="text-sm text-gray-600 mb-4 line-clamp-2">${art.summary}</p>
+                        <a href="article-view.html?id=${key}" class="inline-block text-red-dream border border-red-dream px-4 py-1 rounded hover:bg-red-dream hover:text-white transition text-sm">阅读全文</a>
+                    </div>
+                </div>
+            `;
+            grid.innerHTML += card;
+        });
+    </script>
 </body>
 </html>
