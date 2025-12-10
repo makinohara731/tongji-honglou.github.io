@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章阅读 - 同济红楼社</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>tailwind.config = { theme: { extend: { colors: { 'red-dream': '#A62424', 'rice': '#F5F0E6', 'ink': '#2D2D2D' }, fontFamily: { 'song': ['SimSun', 'serif'] } } } }</script>
+</head>
+<body class="bg-rice font-song text-gray-800 flex flex-col min-h-screen">
+
+    <!-- Navbar 由 navbar.js 生成 -->
+
+    <article class="container mx-auto px-4 py-8 max-w-4xl flex-1">
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden min-h-[500px] p-8 relative">
+            
+            <!-- 返回按钮 -->
+            <a href="index.html" class="absolute top-8 left-8 text-gray-400 hover:text-red-dream transition">
+                <i class="fa fa-arrow-left"></i> 返回首页
+            </a>
+
+            <div id="loading" class="text-center py-20">
+                <i class="fa fa-spinner fa-spin text-4xl text-red-dream"></i>
+            </div>
+            
+            <div id="content-area" class="hidden mt-8">
+                <h1 id="art-title" class="text-3xl md:text-5xl font-bold text-red-dream mb-6 text-center"></h1>
+                
+                <div class="flex justify-center items-center space-x-6 text-gray-500 mb-8 pb-6 border-b border-gray-100 text-sm">
+                    <span><i class="fa fa-user-circle mr-1"></i> <span id="art-author"></span></span>
+                    <span><i class="fa fa-calendar mr-1"></i> <span id="art-date"></span></span>
+                </div>
+                
+                <img id="art-img" src="" class="w-full max-h-[400px] object-cover rounded-lg shadow-md mb-10 hidden">
+                
+                <div id="art-body" class="prose prose-lg max-w-none text-ink leading-relaxed">
+                    <!-- 正文内容 -->
+                </div>
+
+                <!-- 评论区 -->
+                <div class="mt-16 pt-10 border-t-2 border-dashed border-gray-200">
+                    <h3 class="text-2xl font-bold text-red-dream mb-6"><i class="fa fa-comments"></i> 读者雅评</h3>
+                    <div class="giscus"></div>
+                </div>
+            </div>
+
+        </div>
+    </article>
+
+    <script src="js/config.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/navbar.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        
+        if (id && ARTICLES[id]) {
+            const data = ARTICLES[id];
+            
+            // 填充内容
+            document.title = data.title + " - 同济红楼社";
+            document.getElementById('art-title').innerText = data.title;
+            document.getElementById('art-author').innerText = data.author;
+            document.getElementById('art-date').innerText = data.date;
+            document.getElementById('art-body').innerHTML = data.content;
+            
+            if (data.image) {
+                const img = document.getElementById('art-img');
+                img.src = data.image;
+                img.classList.remove('hidden');
+            }
+
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('content-area').classList.remove('hidden');
+
+            // 加载评论 (使用 pathname 映射，确保每篇文章评论独立)
+            loadGiscus('.giscus', null, 'pathname');
+
+        } else {
+            document.getElementById('loading').innerHTML = 
+                `<div class='text-red-500 text-xl'>抱歉，未找到该文章。<br><a href='index.html' class='text-sm underline mt-4 inline-block'>返回首页</a></div>`;
+        }
+    </script>
+</body>
+</html>
