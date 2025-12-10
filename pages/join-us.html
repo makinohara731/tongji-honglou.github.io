@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加入我们 - 同济红楼社</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>tailwind.config = { theme: { extend: { colors: { 'red-dream': '#A62424', 'rice': '#F5F0E6' }, fontFamily: { 'song': ['SimSun', 'serif'] } } } }</script>
+</head>
+<body class="bg-rice font-song flex flex-col min-h-screen">
+    
+    <main class="container mx-auto px-4 py-10 max-w-lg">
+        <div class="bg-white p-8 rounded-lg shadow-lg">
+            <h1 class="text-3xl font-bold text-center text-red-dream mb-6">入社申请书</h1>
+            <p class="text-sm text-gray-500 mb-6 text-center">每周二、四晚 18:00 · 人文学院 208 室</p>
+            
+            <form onsubmit="event.preventDefault(); alert('报名信息已提交（模拟）！\n欢迎来到红楼梦研究社！');" class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 font-bold mb-2">姓名</label>
+                    <input type="text" required class="w-full border rounded px-3 py-2 focus:outline-none focus:border-red-dream">
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-bold mb-2">学号</label>
+                    <input type="text" required class="w-full border rounded px-3 py-2 focus:outline-none focus:border-red-dream">
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-bold mb-2">联系方式 (微信/手机)</label>
+                    <input type="text" required class="w-full border rounded px-3 py-2 focus:outline-none focus:border-red-dream">
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-bold mb-2">最喜欢的红楼人物</label>
+                    <input type="text" class="w-full border rounded px-3 py-2 focus:outline-none focus:border-red-dream">
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-bold mb-2">我想说的话</label>
+                    <textarea class="w-full border rounded px-3 py-2 h-24 focus:outline-none focus:border-red-dream"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-red-dream text-white font-bold py-3 rounded hover:bg-red-800 transition">
+                    提交申请
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/navbar.js"></script>
+</body>
+</html>
