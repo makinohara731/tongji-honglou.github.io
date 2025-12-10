@@ -4,7 +4,7 @@ const ARTICLES = {
         title: "黛玉葬花的美学意蕴",
         author: "社团研究组",
         date: "2025-11-20",
-        image: "https://picsum.photos/id/25/800/400",
+        image: "assets/images/daiyuzanghua.jpg",
         summary: "葬花不仅是惜花，更是对生命归宿的哲学思考...",
         content: `<p>“花谢花飞花满天，红消香断有谁怜？”这首《葬花吟》不仅是林黛玉感叹身世的悲歌...</p><p>（此处省略长文）...</p>`
     },
