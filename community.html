@@ -6,99 +6,79 @@
     <title>大观园社区 - 同济红楼社</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
     <script>tailwind.config = { theme: { extend: { colors: { 'red-dream': '#A62424', 'rice': '#F5F0E6', 'ink': '#2D2D2D' }, fontFamily: { 'song': ['SimSun', 'serif'] } } } }</script>
-    <style>
-        .channel-active { background-color: #FEF2F2; border-right: 4px solid #A62424; color: #A62424; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-    </style>
+    <style>.channel-active { background-color: #FEF2F2; border-right: 4px solid #A62424; color: #A62424; font-weight: bold; }</style>
 </head>
 <body class="bg-rice font-song text-ink h-screen flex flex-col overflow-hidden">
 
-    <!-- 这里的导航栏会由 js/main.js 自动生成，但因为这个页面布局特殊，我们稍作调整，
-         为了保持布局完整，这里还是保留手动控制，但数据从 config 读取 -->
+    <!-- Navbar 自动插入在这里 -->
     
-    <div class="flex flex-1 container mx-auto max-w-7xl my-0 md:my-4 gap-4 overflow-hidden md:px-4 h-full pt-20"> <!-- pt-20 是为了避开 main.js 生成的导航栏 -->
+    <div class="flex flex-1 container mx-auto max-w-7xl md:px-4 h-full pt-4 pb-4 gap-4 overflow-hidden">
         
-        <!-- 左侧频道 -->
-        <aside class="w-full md:w-64 bg-white md:rounded-lg shadow-lg flex flex-col hidden md:flex border-r z-40">
-            <div class="p-4 border-b font-bold text-red-dream">大观园频道</div>
-            <nav class="flex-1 overflow-y-auto py-2 space-y-2 p-2">
-                <button onclick="switchChannel('yihong', '怡红院 · 灌水闲聊')" class="channel-btn channel-active w-full text-left px-4 py-3 rounded hover:bg-gray-50 flex items-center">
-                    <i class="fa fa-coffee w-6 text-center mr-2"></i> 怡红院 (闲聊)
+        <!-- 左侧导航 -->
+        <aside class="w-full md:w-64 bg-white md:rounded-lg shadow flex flex-col hidden md:flex border-r">
+            <div class="p-4 border-b font-bold text-lg text-center bg-red-dream text-white md:rounded-t-lg">
+                大观园频道
+            </div>
+            <nav class="flex-1 overflow-y-auto py-2 space-y-1 p-2">
+                <button onclick="changeChannel('yihong', '怡红院 · 灌水闲聊', this)" class="channel-btn w-full text-left px-4 py-3 rounded hover:bg-gray-50 flex items-center transition">
+                    <i class="fa fa-coffee w-8"></i> 怡红院 (闲聊)
                 </button>
-                <button onclick="switchChannel('xiaoxiang', '潇湘馆 · 原创天地')" class="channel-btn w-full text-left px-4 py-3 rounded hover:bg-gray-50 flex items-center">
-                    <i class="fa fa-pencil w-6 text-center mr-2"></i> 潇湘馆 (创作)
+                <button onclick="changeChannel('xiaoxiang', '潇湘馆 · 原创天地', this)" class="channel-btn w-full text-left px-4 py-3 rounded hover:bg-gray-50 flex items-center transition">
+                    <i class="fa fa-pencil w-8"></i> 潇湘馆 (创作)
                 </button>
-                <button onclick="switchChannel('daoxiang', '稻香村 · 考据辩论')" class="channel-btn w-full text-left px-4 py-3 rounded hover:bg-gray-50 flex items-center">
-                    <i class="fa fa-book w-6 text-center mr-2"></i> 稻香村 (考据)
+                <button onclick="changeChannel('daoxiang', '稻香村 · 考据辩论', this)" class="channel-btn w-full text-left px-4 py-3 rounded hover:bg-gray-50 flex items-center transition">
+                    <i class="fa fa-book w-8"></i> 稻香村 (考据)
                 </button>
-                <button onclick="switchChannel('shengqin', '省亲别墅 · 建议反馈')" class="channel-btn w-full text-left px-4 py-3 rounded hover:bg-gray-50 flex items-center">
-                    <i class="fa fa-bullhorn w-6 text-center mr-2"></i> 省亲别墅 (建议)
+                <button onclick="changeChannel('shengqin', '省亲别墅 · 建议反馈', this)" class="channel-btn w-full text-left px-4 py-3 rounded hover:bg-gray-50 flex items-center transition">
+                    <i class="fa fa-bullhorn w-8"></i> 省亲别墅 (建议)
                 </button>
             </nav>
         </aside>
 
-        <!-- 右侧内容 -->
-        <main class="flex-1 bg-white md:rounded-lg shadow-lg flex flex-col overflow-hidden relative">
+        <!-- 右侧内容区 -->
+        <main class="flex-1 bg-white md:rounded-lg shadow flex flex-col overflow-hidden relative">
             <header class="p-4 border-b bg-white flex justify-between items-center shadow-sm z-10">
                 <div>
-                    <h2 id="channel-title" class="text-lg font-bold text-red-dream">怡红院 · 灌水闲聊</h2>
-                    <p class="text-xs text-gray-500">请文明发言，共建和谐大观园</p>
+                    <h2 id="channel-title" class="text-lg font-bold text-red-dream">请选择频道</h2>
                 </div>
-                <!-- 手机端切换按钮 -->
-                <button class="md:hidden border px-2 py-1 rounded" onclick="document.querySelector('aside').classList.toggle('hidden');document.querySelector('aside').classList.toggle('absolute');document.querySelector('aside').classList.toggle('h-full');">
-                    <i class="fa fa-list"></i> 切换频道
+                <!-- 手机切换按钮 -->
+                <button class="md:hidden border px-3 py-1 rounded bg-gray-100" onclick="document.querySelector('aside').classList.toggle('hidden');document.querySelector('aside').classList.toggle('absolute');document.querySelector('aside').classList.toggle('h-full');document.querySelector('aside').classList.toggle('z-50');">
+                    <i class="fa fa-list"></i> 频道
                 </button>
             </header>
 
-            <div class="flex-1 overflow-y-auto p-4 bg-gray-50" id="giscus-container">
+            <div class="flex-1 overflow-y-auto p-4 bg-gray-50 scroll-smooth" id="giscus-wrapper">
                 <div class="giscus"></div>
             </div>
         </main>
     </div>
 
-    <script src="js/data.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/utils.js"></script>
     <script>
-        function switchChannel(term, title) {
-            // UI更新
+        function changeChannel(term, title, btn) {
+            // UI 更新
             document.querySelectorAll('.channel-btn').forEach(b => b.classList.remove('channel-active'));
-            event.currentTarget.classList.add('channel-active');
+            if(btn) btn.classList.add('channel-active');
             document.getElementById('channel-title').innerText = title;
             
-            // 重载Giscus
-            const container = document.querySelector('.giscus');
-            container.innerHTML = '';
-            
-            const script = document.createElement('script');
-            script.src = "https://giscus.app/client.js";
-            // 从 data.js 的 SITE_CONFIG 读取配置
-            script.setAttribute("data-repo", SITE_CONFIG.giscus.repo);
-            script.setAttribute("data-repo-id", SITE_CONFIG.giscus.repoId);
-            script.setAttribute("data-category", SITE_CONFIG.giscus.category);
-            script.setAttribute("data-category-id", SITE_CONFIG.giscus.categoryId);
-            script.setAttribute("data-mapping", "specific");
-            script.setAttribute("data-term", term); // 关键！
-            script.setAttribute("data-strict", "0");
-            script.setAttribute("data-reactions-enabled", "1");
-            script.setAttribute("data-emit-metadata", "0");
-            script.setAttribute("data-input-position", "bottom");
-            script.setAttribute("data-theme", "noborder_light");
-            script.setAttribute("data-lang", "zh-CN");
-            script.setAttribute("data-loading", "lazy");
-            script.setAttribute("crossorigin", "anonymous");
-            script.setAttribute("async", "");
-            
-            document.getElementById('giscus-container').querySelector('.giscus').appendChild(script);
-            
-            // 手机端自动收起
-            if(window.innerWidth < 768) document.querySelector('aside').classList.add('hidden');
+            // 加载评论
+            loadGiscus('.giscus', term, 'specific');
+
+            // 手机端自动收起侧边栏
+            if(window.innerWidth < 768) {
+                document.querySelector('aside').classList.add('hidden');
+                document.querySelector('aside').classList.remove('absolute', 'h-full', 'z-50');
+            }
         }
 
-        // 初始化
+        // 初始化默认频道
         window.addEventListener('load', () => {
-            // 手动触发一次点击来加载默认频道
-            document.querySelector('.channel-btn').click();
+            const firstBtn = document.querySelector('.channel-btn');
+            if(firstBtn) firstBtn.click();
         });
     </script>
 </body>
