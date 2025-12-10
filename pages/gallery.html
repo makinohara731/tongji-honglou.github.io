@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>光影红楼 - 精彩图集</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>tailwind.config = { theme: { extend: { colors: { 'red-dream': '#A62424', 'rice': '#F5F0E6' }, fontFamily: { 'song': ['SimSun', 'serif'] } } } }</script>
+</head>
+<body class="bg-rice font-song flex flex-col min-h-screen">
+    
+    <!-- Navbar 自动生成 (注意 js 路径是 ../js/navbar.js) -->
+
+    <main class="container mx-auto px-4 py-10">
+        <h1 class="text-4xl font-bold text-center text-red-dream mb-4">光影红楼</h1>
+        <p class="text-center text-gray-600 mb-10">记取那年花下客，定格红楼梦中人</p>
+
+        <!-- 瀑布流布局模拟 -->
+        <div class="columns-1 md:columns-3 gap-6 space-y-6">
+            <div class="break-inside-avoid rounded-lg overflow-hidden shadow-lg">
+                <img src="https://picsum.photos/600/800?random=1" class="w-full">
+                <div class="p-4 bg-white"><p>2024 春日游园会 - 黛玉葬花 Cosplay</p></div>
+            </div>
+            <div class="break-inside-avoid rounded-lg overflow-hidden shadow-lg">
+                <img src="https://picsum.photos/600/400?random=2" class="w-full">
+                <div class="p-4 bg-white"><p>社团活动室日常 - 诗词飞花令</p></div>
+            </div>
+            <div class="break-inside-avoid rounded-lg overflow-hidden shadow-lg">
+                <img src="https://picsum.photos/600/700?random=3" class="w-full">
+                <div class="p-4 bg-white"><p>古琴雅集展示</p></div>
+            </div>
+            <div class="break-inside-avoid rounded-lg overflow-hidden shadow-lg">
+                <img src="https://picsum.photos/600/500?random=4" class="w-full">
+                <div class="p-4 bg-white"><p>校庆文化展区一角</p></div>
+            </div>
+            <div class="break-inside-avoid rounded-lg overflow-hidden shadow-lg">
+                <img src="https://picsum.photos/600/600?random=5" class="w-full">
+                <div class="p-4 bg-white"><p>2023 中秋拜月仪式</p></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/navbar.js"></script>
+</body>
+</html>
