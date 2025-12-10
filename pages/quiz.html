@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红楼雅趣 - 知识问答</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>tailwind.config = { theme: { extend: { colors: { 'red-dream': '#A62424', 'rice': '#F5F0E6' }, fontFamily: { 'song': ['SimSun', 'serif'] } } } }</script>
+</head>
+<body class="bg-rice font-song flex flex-col min-h-screen">
+    
+    <main class="container mx-auto px-4 py-10 flex-1 flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-xl max-w-2xl w-full text-center">
+            <h1 class="text-3xl font-bold text-red-dream mb-2"><i class="fa fa-puzzle-piece"></i> 红楼知识小测</h1>
+            <p class="text-gray-500 mb-8">共 <span id="total-count">0</span> 题</p>
+
+            <div id="quiz-container">
+                <h3 id="question-text" class="text-xl font-bold mb-6 min-h-[60px] flex items-center justify-center">题目加载中...</h3>
+                <div id="options-area" class="space-y-3">
+                    <!-- 选项按钮 -->
+                </div>
+            </div>
+
+            <div id="result-area" class="hidden">
+                <div class="text-6xl mb-4" id="score-icon"></div>
+                <h2 class="text-2xl font-bold mb-4" id="score-text"></h2>
+                <button onclick="location.reload()" class="bg-red-dream text-white px-6 py-2 rounded hover:bg-red-800 transition">再试一次</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/data.js"></script> <!-- 题库在这里 -->
+    <script src="../js/navbar.js"></script>
+    <script>
+        let currentQ = 0;
+        let score = 0;
+        const total = QUIZ_DATA.length;
+
+        document.getElementById('total-count').innerText = total;
+
+        function loadQuestion() {
+            if (currentQ >= total) {
+                showResult();
+                return;
+            }
+            const data = QUIZ_DATA[currentQ];
+            document.getElementById('question-text').innerText = (currentQ + 1) + ". " + data.q;
+            
+            const optsDiv = document.getElementById('options-area');
+            optsDiv.innerHTML = '';
+            
+            data.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full border border-gray-300 p-3 rounded hover:bg-red-50 hover:border-red-dream transition text-left";
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(idx, data.a);
+                optsDiv.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selected, correct) {
+            if (selected === correct) score++;
+            currentQ++;
+            loadQuestion();
+        }
+
+        function showResult() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('result-area').classList.remove('hidden');
+            
+            const resultText = document.getElementById('score-text');
+            const resultIcon = document.getElementById('score-icon');
+            
+            resultText.innerText = `答对 ${score} / ${total} 题`;
+            if (score === total) {
+                resultIcon.innerHTML = "🏆";
+                resultText.innerText += " - 太棒了，你是红楼学者！";
+            } else if (score > total / 2) {
+                resultIcon.innerHTML = "📚";
+                resultText.innerText += " - 不错，继续努力！";
+            } else {
+                resultIcon.innerHTML = "💪";
+                resultText.innerText += " - 需要回去重读原著哦！";
+            }
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>
