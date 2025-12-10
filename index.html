@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>同济大学红楼梦研究社</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 自定义配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'red-dream': '#A62424', // 红楼主色
+                        'ink': '#2D2D2D',       // 墨色
+                        'rice': '#F5F0E6',      // 米色
+                    },
+                    fontFamily: {
+                        'song': ['SimSun', 'serif'], // 宋体
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .bg-texture {
+                background-image: url('https://picsum.photos/id/106/1000/1000');
+                background-blend-mode: overlay;
+            }
+        }
+    </style>
+</head>
+<body class="bg-rice font-song text-ink">
+    <!-- 导航栏 -->
+    <nav class="bg-red-dream text-white shadow-md fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-book text-2xl"></i>
+                <h1 class="text-xl md:text-2xl font-bold">同济大学红楼梦研究社</h1>
+            </div>
+            
+            <!-- 移动端菜单按钮 -->
+            <button class="md:hidden text-white focus:outline-none" id="menuBtn">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+            
+            <!-- 桌面端导航 -->
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="#home" class="hover:text-yellow-200 transition-colors">首页</a></li>
+                <li><a href="#about" class="hover:text-yellow-200 transition-colors">社团介绍</a></li>
+                <li><a href="#appreciation" class="hover:text-yellow-200 transition-colors">红楼赏析</a></li>
+                <li><a href="#activities" class="hover:text-yellow-200 transition-colors">社团活动</a></li>
+                <li><a href="#members" class="hover:text-yellow-200 transition-colors">成员风采</a></li>
+                <li><a href="#contact" class="hover:text-yellow-200 transition-colors">联系我们</a></li>
+            </ul>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div class="md:hidden hidden bg-red-dream/95 absolute w-full" id="mobileMenu">
+            <ul class="py-4 px-6 space-y-4">
+                <li><a href="#home" class="block hover:text-yellow-200">首页</a></li>
+                <li><a href="#about" class="block hover:text-yellow-200">社团介绍</a></li>
+                <li><a href="#appreciation" class="block hover:text-yellow-200">红楼赏析</a></li>
+                <li><a href="#activities" class="block hover:text-yellow-200">社团活动</a></li>
+                <li><a href="#members" class="block hover:text-yellow-200">成员风采</a></li>
+                <li><a href="#contact" class="block hover:text-yellow-200">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 首页横幅 -->
+    <section id="home" class="pt-24 pb-16 bg-cover bg-center" style="background-image: url('https://picsum.photos/id/237/1920/800');">
+        <div class="bg-black/50 w-full h-full py-16">
+            <div class="container mx-auto px-4 text-center text-white">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6 text-shadow">同济大学红楼梦研究社</h2>
+                <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-8">
+                    品红楼雅韵，探千古奇书，聚同济知音
+                </p>
+                <a href="#about" class="bg-red-dream hover:bg-red-800 text-white px-8 py-3 rounded-md transition-colors">
+                    了解我们
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 社团介绍 -->
+    <section id="about" class="py-16 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 text-red-dream">社团介绍</h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <img src="https://picsum.photos/id/24/600/400" alt="红楼梦社团活动" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="space-y-4">
+                    <p class="text-lg">
+                        同济大学红楼梦研究社成立于2005年，是由校内热爱《红楼梦》的师生自发组成的文化类社团。
+                    </p>
+                    <p class="text-lg">
+                        我们以"传承经典，品味红楼"为宗旨，定期举办读书分享会、红楼主题讲座、经典桥段演绎、诗词品鉴等活动，
+                        为同济师生提供一个交流红学、探讨经典的平台。
+                    </p>
+                    <p class="text-lg">
+                        社团汇聚了不同专业、不同年级的红楼爱好者，在这里，我们共同研读这部千古奇书，
+                        感受中华文化的博大精深。
+                    </p>
+                    <div class="flex flex-wrap gap-4 mt-6">
+                        <div class="bg-red-dream/10 p-4 rounded-md">
+                            <h4 class="font-bold text-red-dream">成立时间</h4>
+                            <p>2005年9月</p>
+                        </div>
+                        <div class="bg-red-dream/10 p-4 rounded-md">
+                            <h4 class="font-bold text-red-dream">社团宗旨</h4>
+                            <p>传承经典，品味红楼</p>
+                        </div>
+                        <div class="bg-red-dream/10 p-4 rounded-md">
+                            <h4 class="font-bold text-red-dream">成员规模</h4>
+                            <p>80+ 在校成员</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 红楼赏析 -->
+    <section id="appreciation" class="py-16 px-4 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 text-red-dream">红楼赏析</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- 赏析文章1 -->
+                <div class="bg-rice rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://picsum.photos/id/25/600/300" alt="黛玉葬花" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-red-dream">黛玉葬花的美学意蕴</h3>
+                        <p class="text-gray-700 mb-4">
+                            黛玉葬花不仅是《红楼梦》中最经典的场景之一，更是曹雪芹美学思想的集中体现...
+                        </p>
+                        <a href="#" class="text-red-dream hover:text-red-700 font-medium">
+                            阅读全文 <i class="fa fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 赏析文章2 -->
+                <div class="bg-rice rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://picsum.photos/id/26/600/300" alt="金陵十二钗" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-red-dream">金陵十二钗的命运解读</h3>
+                        <p class="text-gray-700 mb-4">
+                            金陵十二钗正册中的十二位女性，各自代表着不同的人生轨迹和命运结局...
+                        </p>
+                        <a href="#" class="text-red-dream hover:text-red-700 font-medium">
+                            阅读全文 <i class="fa fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 赏析文章3 -->
+                <div class="bg-rice rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://picsum.photos/id/27/600/300" alt="诗词赏析" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-red-dream">红楼诗词的艺术特色</h3>
+                        <p class="text-gray-700 mb-4">
+                            《红楼梦》中的诗词歌赋不仅是情节的点缀，更是人物性格和命运的隐喻...
+                        </p>
+                        <a href="#" class="text-red-dream hover:text-red-700 font-medium">
+                            阅读全文 <i class="fa fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#" class="inline-block bg-red-dream hover:bg-red-800 text-white px-6 py-3 rounded-md transition-colors">
+                    查看更多赏析文章
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 社团活动 -->
+    <section id="activities" class="py-16 px-4 bg-red-dream/5">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 text-red-dream">社团活动</h2>
+            
+            <!-- 活动轮播 -->
+            <div class="relative mb-12" id="activityCarousel">
+                <div class="overflow-hidden rounded-lg shadow-lg">
+                    <div class="flex transition-transform duration-500" id="carouselInner">
+                        <!-- 轮播项1 -->
+                        <div class="min-w-full">
+                            <img src="https://picsum.photos/id/28/1200/500" alt="读书分享会" class="w-full h-80 object-cover">
+                            <div class="p-6 bg-white">
+                                <h3 class="text-2xl font-bold text-red-dream mb-2">红楼读书分享会</h3>
+                                <p class="text-gray-700">
+                                    每月一次的读书分享会，社员们围坐一起，逐章研读《红楼梦》，分享各自的阅读心得和独特见解。
+                                </p>
+                                <p class="text-gray-600 mt-2">时间：每月第三个周六 14:00-16:00 | 地点：同济大学图书馆3楼研讨室</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 轮播项2 -->
+                        <div class="min-w-full">
+                            <img src="https://picsum.photos/id/29/1200/500" alt="主题讲座" class="w-full h-80 object-cover">
+                            <div class="p-6 bg-white">
+                                <h3 class="text-2xl font-bold text-red-dream mb-2">红学专家主题讲座</h3>
+                                <p class="text-gray-700">
+                                    邀请知名红学专家、高校教授来校开展专题讲座，深入解读《红楼梦》的文化内涵和艺术价值。
+                                </p>
+                                <p class="text-gray-600 mt-2">时间：每学期2-3次 | 地点：同济大学逸夫楼报告厅</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 轮播项3 -->
+                        <div class="min-w-full">
+                            <img src="https://picsum.photos/id/30/1200/500" alt="经典演绎" class="w-full h-80 object-cover">
+                            <div class="p-6 bg-white">
+                                <h3 class="text-2xl font-bold text-red-dream mb-2">红楼经典桥段演绎</h3>
+                                <p class="text-gray-700">
+                                    社员们自编自导自演《红楼梦》经典桥段，通过戏剧表演的形式深入理解人物性格和故事情节。
+                                </p>
+                                <p class="text-gray-600 mt-2">时间：每年5月、12月 | 地点：同济大学学生活动中心</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 轮播控制按钮 -->
+                <button class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/80 hover:bg-white text-red-dream w-10 h-10 rounded-full flex items-center justify-center shadow-md" id="prevBtn">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <button class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/80 hover:bg-white text-red-dream w-10 h-10 rounded-full flex items-center justify-center shadow-md" id="nextBtn">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+                
+                <!-- 轮播指示器 -->
+                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+                    <button class="w-3 h-3 rounded-full bg-red-dream carousel-indicator active" data-index="0"></button>
+                    <button class="w-3 h-3 rounded-full bg-white/70 hover:bg-white carousel-indicator" data-index="1"></button>
+                    <button class="w-3 h-3 rounded-full bg-white/70 hover:bg-white carousel-indicator" data-index="2"></button>
+                </div>
+            </div>
+            
+            <!-- 近期活动 -->
+            <h3 class="text-2xl font-bold text-center mb-8 text-red-dream">近期活动预告</h3>
+            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start">
+                        <div class="bg-red-dream text-white p-3 rounded-md mr-4 text-center">
+                            <div class="text-xl font-bold">15</div>
+                            <div class="text-sm">11月</div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-red-dream mb-2">《红楼梦》诗词朗诵会</h4>
+                            <p class="text-gray-700 mb-3">
+                                以诗词会友，共同朗诵红楼经典诗词，感受文字之美。
+                            </p>
+                            <div class="flex items-center text-gray-600 text-sm">
+                                <i class="fa fa-clock-o mr-2"></i>
+                                <span>14:00-16:30</span>
+                                <i class="fa fa-map-marker ml-4 mr-2"></i>
+                                <span>同济大学人文学院会议室</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-start">
+                        <div class="bg-red-dream text-white p-3 rounded-md mr-4 text-center">
+                            <div class="text-xl font-bold">28</div>
+                            <div class="text-sm">11月</div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-red-dream mb-2">红学专家讲座：红楼饮食文化</h4>
+                            <p class="text-gray-700 mb-3">
+                                邀请复旦大学中文系教授讲解《红楼梦》中的饮食文化。
+                            </p>
+                            <div class="flex items-center text-gray-600 text-sm">
+                                <i class="fa fa-clock-o mr-2"></i>
+                                <span>19:00-21:00</span>
+                                <i class="fa fa-map-marker ml-4 mr-2"></i>
+                                <span>同济大学逸夫楼101报告厅</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 成员风采 -->
+    <section id="members" class="py-16 px-4 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 text-red-dream">成员风采</h2>
+            
+            <div class="grid md:grid-cols-4 gap-6">
+                <!-- 社长 -->
+                <div class="text-center">
+                    <div class="w-40 h-40 rounded-full overflow-hidden mx-auto mb-4 border-4 border-red-dream/30">
+                        <img src="https://picsum.photos/id/64/200/200" alt="社长" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold">张明宇</h3>
+                    <p class="text-red-dream font-medium">社长 | 中文系2022级</p>
+                    <p class="mt-2 text-gray-700">主攻方向：红楼诗词研究</p>
+                </div>
+                
+                <!-- 副社长 -->
+                <div class="text-center">
+                    <div class="w-40 h-40 rounded-full overflow-hidden mx-auto mb-4 border-4 border-red-dream/30">
+                        <img src="https://picsum.photos/id/65/200/200" alt="副社长" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold">李诗韵</h3>
+                    <p class="text-red-dream font-medium">副社长 | 历史系2022级</p>
+                    <p class="mt-2 text-gray-700">主攻方向：红楼文化背景研究</p>
+                </div>
+                
+                <!-- 活动部部长 -->
+                <div class="text-center">
+                    <div class="w-40 h-40 rounded-full overflow-hidden mx-auto mb-4 border-4 border-red-dream/30">
+                        <img src="https://picsum.photos/id/66/200/200" alt="活动部部长" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold">王浩然</h3>
+                    <p class="text-red-dream font-medium">活动部部长 | 哲学系2023级</p>
+                    <p class="mt-2 text-gray-700">主攻方向：红楼哲学思想研究</p>
+                </div>
+                
+                <!-- 宣传部部长 -->
+                <div class="text-center">
+                    <div class="w-40 h-40 rounded-full overflow-hidden mx-auto mb-4 border-4 border-red-dream/30">
+                        <img src="https://picsum.photos/id/67/200/200" alt="宣传部部长" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-bold">陈雨桐</h3>
+                    <p class="text-red-dream font-medium">宣传部部长 | 新闻系2023级</p>
+                    <p class="mt-2 text-gray-700">主攻方向：红楼人物形象分析</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <p class="text-gray-700 mb-4">我们有80+活跃社员，来自不同专业、不同年级</p>
+                <a href="#" class="inline-block border-2 border-red-dream text-red-dream hover:bg-red-dream hover:text-white px-6 py-2 rounded-md transition-colors">
+                    加入我们
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="py-16 px-4 bg-red-dream/10">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12 text-red-dream">联系我们</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-6 text-red-dream">加入红楼社</h3>
+                    <form>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2" for="name">姓名</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-dream/50" placeholder="请输入您的姓名">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2" for="studentId">学号</label>
+                            <input type="text" id="studentId" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-dream/50" placeholder="请输入您的学号">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2" for="major">专业年级</label>
+                            <input type="text" id="major" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-dream/50" placeholder="例如：中文系2024级">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2" for="reason">加入理由</label>
+                            <textarea id="reason" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-dream/50" placeholder="请简述您想加入红楼社的原因"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-red-dream hover:bg-red-800 text-white py-3 rounded-md transition-colors">
+                            提交申请
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-6 text-red-dream">联系方式</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i class="fa fa-envelope text-red-dream text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">邮箱</h4>
+                                <p class="text-gray-700">honglou@tongji.edu.cn</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fa fa-wechat text-red-dream text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">微信公众号</h4>
+                                <p class="text-gray-700">同济红楼社</p>
+                                <div class="mt-2 w-40 h-40 bg-gray-100 flex items-center justify-center">
+                                    <span class="text-gray-500">公众号二维码</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fa fa-map-marker text-red-dream text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">活动地点</h4>
+                                <p class="text-gray-700">同济大学四平路校区 人文学院208室</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fa fa-clock-o text-red-dream text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">值班时间</h4>
+                                <p class="text-gray-700">每周二、四 18:00-20:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- ================= 留言板开始 ================= -->
+    <section id="comments" class="py-16 px-4 bg-white">
+        <div class="container mx-auto max-w-4xl">
+            <!-- 标题 -->
+            <h2 class="text-3xl font-bold text-center mb-4 text-red-dream">红楼茶馆</h2>
+            <p class="text-center text-gray-600 mb-10">
+                “满纸荒唐言，一把辛酸泪。”<br>
+                既然有缘来到这里，不妨留下您的只言片语，与社友共话红楼。
+            </p>
+            
+            <!-- Giscus 评论区代码 -->
+            <script src="https://giscus.app/client.js"
+                    data-repo="makinohara731/tongji-honglou.github.io"
+                    data-repo-id="R_kgDOQmDBtg"
+                    data-category="General"
+                    data-category-id="DIC_kwDOQmDBts4CznfX"
+                    data-mapping="pathname"
+                    data-strict="0"
+                    data-reactions-enabled="1"
+                    data-emit-metadata="0"
+                    data-input-position="top"
+                    data-theme="noborder_light"
+                    data-lang="zh-CN"
+                    data-loading="lazy"
+                    crossorigin="anonymous"
+                    async>
+            </script>
+        </div>
+    </section>
+    <!-- ================= 留言板结束 ================= -->
+    <!-- 页脚 -->
+    <footer class="bg-ink text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fa fa-book mr-2"></i> 同济大学红楼梦研究社
+                    </h3>
+                    <p class="text-gray-300">
+                        传承经典，品味红楼，聚同济知音
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">快速链接</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#home" class="hover:text-red-300 transition-colors">首页</a></li>
+                        <li><a href="#about" class="hover:text-red-300 transition-colors">社团介绍</a></li>
+                        <li><a href="#activities" class="hover:text-red-300 transition-colors">社团活动</a></li>
+                        <li><a href="#contact" class="hover:text-red-300 transition-colors">联系我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">关注我们</h3>
+                    <div class="flex space-x-4 text-xl">
+                        <a href="#" class="hover:text-red-300 transition-colors"><i class="fa fa-weixin"></i></a>
+                        <a href="#" class="hover:text-red-300 transition-colors"><i class="fa fa-weibo"></i></a>
+                        <a href="#" class="hover:text-red-300 transition-colors"><i class="fa fa-qq"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 同济大学红楼梦研究社 版权所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2', 'bg-red-dream/95');
+                navbar.classList.remove('py-3');
+            } else {
+                navbar.classList.add('py-3');
+                navbar.classList.remove('py-2', 'bg-red-dream/95');
+            }
+        });
+
+        // 移动端菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动端菜单
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // 轮播图功能
+        const carouselInner = document.getElementById('carouselInner');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+        let currentIndex = 0;
+        const totalSlides = 3;
+
+        // 更新轮播指示器
+        function updateIndicators() {
+            indicators.forEach((indicator, index) => {
+                if (index === currentIndex) {
+                    indicator.classList.add('bg-red-dream');
+                    indicator.classList.remove('bg-white/70');
+                } else {
+                    indicator.classList.add('bg-white/70');
+                    indicator.classList.remove('bg-red-dream');
+                }
+            });
+        }
+
+        // 切换轮播
+        function moveCarousel(index) {
+            currentIndex = index;
+            carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+            updateIndicators();
+        }
+
+        // 下一张
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            moveCarousel(currentIndex);
+        });
+
+        // 上一张
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            moveCarousel(currentIndex);
+        });
+
+        // 点击指示器切换
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                moveCarousel(index);
+            });
+        });
+
+        // 自动轮播
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            moveCarousel(currentIndex);
+        }, 5000);
+    </script>
+</body>
+</html>
