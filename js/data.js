@@ -12,7 +12,7 @@ const ARTICLES = {
         title: "金陵十二钗命运解读",
         author: "熊副社长",
         date: "2025-11-25",
-        image: "https://picsum.photos/id/26/800/400",
+        image: "assets/images/jinglingshierchai.jpg",
         summary: "判词中的隐喻，早已注定了众人的结局...",
         content: `<p>金陵十二钗正册中的十二位女性，各自代表着不同的人生轨迹...</p>`
     },
@@ -20,7 +20,7 @@ const ARTICLES = {
         title: "红楼诗词艺术特色",
         author: "何社长",
         date: "2025-11-28",
-        image: "https://picsum.photos/id/27/800/400",
+        image: "assets/images/shici.jpg",
         summary: "字字珠玑，句句血泪，解析红楼诗词之美...",
         content: `<p>《红楼梦》中的诗词歌赋不仅是情节的点缀...</p>`
     }
